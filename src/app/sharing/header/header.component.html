@@ -1,0 +1,57 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand"><h2>Kanban Board</h2></a>
+  <!-- <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </form> -->
+
+  <div *ngIf="isUser" class="ms-auto profile">
+    <div class="notification" mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>notifications</mat-icon>
+    </div>
+    <div class="profile" routerLink="/profile">
+      <img [src]="imageSrc || 'assets/images/empty-profile.png'" />
+      <div class="name">
+        <strong
+          >{{ currentUser?.name }}
+          <mat-icon>keyboard_arrow_down</mat-icon></strong
+        >
+        <p>{{ currentUser?.email }}</p>
+      </div>
+    </div>
+  </div>
+  <button
+    class="btn btn-outline-danger my-2 my-sm-0"
+    type="submit"
+    *ngIf="isUser"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+</nav>
+<div class="test">
+  <mat-menu #menu="matMenu" xPosition="before" class="test">
+    <div
+      mat-menu-item
+      *ngFor="let task of approachingTasks"
+      (click)="
+        taskDetails(
+          task,
+          task.status == 'Todo'
+            ? sectionTitle?.todoColor
+            : task.status == 'Inprogress'
+            ? sectionTitle?.inprogressColor
+            : sectionTitle?.doneColor
+        )
+      "
+    >
+      <div style="display: flex">
+        <strong>{{ task.title }}</strong>
+        <div class="text-danger alert">1 Day</div>
+      </div>
+      <div class="date">
+        <mat-icon>access_time</mat-icon>
+        <span>{{ task.dueDate }}</span>
+      </div>
+    </div>
+  </mat-menu>
+</div>

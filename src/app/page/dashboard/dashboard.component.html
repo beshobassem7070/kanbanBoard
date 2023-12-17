@@ -1,0 +1,260 @@
+<div class="container welcome">
+  <h1>
+    Welcome, <strong>{{ currentUser?.name }}</strong>
+  </h1>
+</div>
+
+<div class="container">
+  <div class="row" cdkDropListGroup>
+    <div class="col-md-4">
+      <div class="phase-list">
+        <div
+          class="title-section to-do"
+          [ngStyle]="{
+            background: backgroundColor(sectionTitle?.todoColor)
+          }"
+        >
+          <h2>{{ sectionTitle?.todoTitle }}</h2>
+          <div>
+            <mat-icon
+              (click)="
+                editColumnTitle(
+                  'todoTitle',
+                  sectionTitle?.todoTitle,
+                  sectionTitle?.todoColor,
+                  sectionTitle?.id
+                )
+              "
+              [ngStyle]="{ color: sectionTitle?.todoColor }"
+              >edit</mat-icon
+            >
+            <mat-icon
+              (click)="addTodoList()"
+              [ngStyle]="{ color: sectionTitle?.todoColor }"
+              >add_circle_outline</mat-icon
+            >
+          </div>
+        </div>
+        <div class="example-container">
+          <div
+            cdkDropList
+            [cdkDropListData]="todoList"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="example-box" cdkDrag *ngFor="let item of todoList">
+              <div class="title">
+                <h4 (click)="taskDetails(item, sectionTitle?.todoColor)">
+                  {{ item.title }}
+                </h4>
+                <div class="menu">
+                  <div
+                    class="todo-statue status"
+                    [ngStyle]="{
+                      color: sectionTitle?.todoColor,
+                      background: backgroundColor(sectionTitle?.todoColor)
+                    }"
+                  >
+                    {{ item.status }}
+                  </div>
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="menu"
+                    aria-label="Example icon-button with a menu"
+                    class="more-option-task"
+                  >
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                </div>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="addTodoList(item)">
+                    <span>Edit</span>
+                  </button>
+                  <button
+                    mat-menu-item
+                    (click)="deleteTask(item.id, 'todoTasks')"
+                  >
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </div>
+              <div class="date">
+                <mat-icon>access_time</mat-icon>
+                <span>{{ item.dueDate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="phase-list">
+        <div
+          class="title-section inprogress"
+          [ngStyle]="{
+            background: backgroundColor(sectionTitle?.inprogressColor)
+          }"
+        >
+          <h2>{{ sectionTitle?.inprogressTitle }}</h2>
+          <div>
+            <mat-icon
+              (click)="
+                editColumnTitle(
+                  'inprogressTitle',
+                  sectionTitle?.inprogressTitle,
+                  sectionTitle?.inprogressColor,
+                  sectionTitle?.id
+                )
+              "
+              [ngStyle]="{ color: sectionTitle?.inprogressColor }"
+              >edit</mat-icon
+            >
+            <mat-icon
+              (click)="addInprogressList()"
+              [ngStyle]="{ color: sectionTitle?.inprogressColor }"
+              >add_circle_outline</mat-icon
+            >
+          </div>
+        </div>
+        <div class="example-container">
+          <div
+            cdkDropList
+            [cdkDropListData]="inProgressList"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="example-box"
+              cdkDrag
+              *ngFor="let item of inProgressList"
+            >
+              <div class="title">
+                <h4 (click)="taskDetails(item, sectionTitle?.inprogressColor)">
+                  {{ item.title }}
+                </h4>
+                <div class="menu">
+                  <div
+                    class="inprogress-statue status"
+                    class="todo-statue status"
+                    [ngStyle]="{
+                      color: sectionTitle?.inprogressColor,
+                      background: backgroundColor(sectionTitle?.inprogressColor)
+                    }"
+                  >
+                    {{ item.status }}
+                  </div>
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="menu"
+                    aria-label="Example icon-button with a menu"
+                    class="more-option-task"
+                  >
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                </div>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="addInprogressList(item)">
+                    <span>Edit</span>
+                  </button>
+                  <button
+                    mat-menu-item
+                    (click)="deleteTask(item.id, 'inprogressTasks')"
+                  >
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </div>
+              <div class="date">
+                <mat-icon>access_time</mat-icon>
+                <span>{{ item.dueDate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="phase-list">
+        <div
+          class="title-section done"
+          [ngStyle]="{
+            background: backgroundColor(sectionTitle?.doneColor)
+          }"
+        >
+          <h2>{{ sectionTitle?.doneTitle }}</h2>
+          <div>
+            <mat-icon
+              (click)="
+                editColumnTitle(
+                  'doneTitle',
+                  sectionTitle?.doneTitle,
+                  sectionTitle?.doneColor,
+                  sectionTitle?.id
+                )
+              "
+              [ngStyle]="{ color: sectionTitle?.doneColor }"
+              >edit</mat-icon
+            >
+            <mat-icon
+              (click)="addDoneList()"
+              [ngStyle]="{ color: sectionTitle?.doneColor }"
+              >add_circle_outline</mat-icon
+            >
+          </div>
+        </div>
+        <div class="example-container">
+          <div
+            cdkDropList
+            [cdkDropListData]="doneList"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="example-box" cdkDrag *ngFor="let item of doneList">
+              <div class="title">
+                <h4 (click)="taskDetails(item, sectionTitle?.doneColor)">
+                  {{ item.title }}
+                </h4>
+                <div class="menu">
+                  <div
+                    class="done-statue status"
+                    class="todo-statue status"
+                    [ngStyle]="{
+                      color: sectionTitle?.doneColor,
+                      background: backgroundColor(sectionTitle?.doneColor)
+                    }"
+                  >
+                    {{ item.status }}
+                  </div>
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="menu"
+                    aria-label="Example icon-button with a menu"
+                    class="more-option-task"
+                  >
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                </div>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="addDoneList(item)">
+                    <span>Edit</span>
+                  </button>
+                  <button
+                    mat-menu-item
+                    (click)="deleteTask(item.id, 'doneTasks')"
+                  >
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </div>
+              <div class="date">
+                <mat-icon>access_time</mat-icon>
+                <span>{{ item.dueDate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

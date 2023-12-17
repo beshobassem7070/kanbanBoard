@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 card">
+      <div class="profile-pic">
+        <label class="custom-file-upload">
+          <img [src]="imageSrc || 'assets/images/empty-profile.png'" />
+          <mat-icon>camera_alt</mat-icon>
+          <input type="file" (change)="readURL($event)" />
+        </label>
+        <!-- <button type="button" *ngIf="imageSrc" (click)="saveProfilePic()">
+          Save
+        </button> -->
+      </div>
+
+      <h2>
+        <strong>{{ currentUser?.name }}</strong>
+      </h2>
+      <p>{{ currentUser?.email }}</p>
+      <div class="row">
+        <div class="col-sm-4 task">
+          <div class="todo-task">
+            <h2><strong>Todo</strong></h2>
+            <p>
+              <strong>{{ todoList.length }}</strong> task
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-4 task">
+          <div class="inprogress-task">
+            <h2><strong>Inprogress</strong></h2>
+            <p>
+              <strong>{{ inProgressList.length }}</strong> task
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-4 task">
+          <div class="done-task">
+            <h2><strong>Done</strong></h2>
+            <p>
+              <strong>{{ doneList.length }}</strong> task
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container back-button">
+  <button (click)="goBack()" class="btn btn-outline-primary">
+    <mat-icon>keyboard_backspace</mat-icon> Back To My Dashboard
+  </button>
+</div>

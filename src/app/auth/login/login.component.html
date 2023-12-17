@@ -1,0 +1,62 @@
+<div id="login" class="main-card mb-3 card">
+  <div class="card-body">
+    <div>
+      <div>
+        <!-- <img class="img-fluid mb-2" src="{{ logoURL }}" /> -->
+      </div>
+      <h1><strong>Login</strong></h1>
+      <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+        <label class="form-label">Eamil</label>
+        <input
+          class="form-control"
+          ngModel
+          [pattern]="EMAIL_REGEX"
+          name="email"
+          type="text"
+          required
+          placeholder="Email Address"
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+        />
+        <div *ngIf="f.submitted && email.errors" class="invalid-feedback">
+          <div *ngIf="email.errors?.['required']">Email is required</div>
+          <div *ngIf="email.errors?.['email'] || email.errors?.['pattern']">
+            Email must be a valid email address
+          </div>
+        </div>
+
+        <label class="form-label">Password</label>
+        <input
+          class="form-control"
+          ngModel
+          name="password"
+          type="password"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+          required
+          #password="ngModel"
+          placeholder="Password"
+        />
+        <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+          <div *ngIf="password.errors?.['required']">Password is required</div>
+          <!-- <div *ngIf="password.errors?.['minlength']">
+            Password must be at least 6 characters
+          </div> -->
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <div class="date-of-update">
+        <hr class="date-of-update-line" />
+        <span class="date-of-update-label">Or</span>
+        <hr class="date-of-update-line" />
+      </div>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        routerLink="/auth/register"
+      >
+        Register
+      </button>
+    </div>
+  </div>
+</div>

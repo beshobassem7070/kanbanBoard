@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kanban-board-700ab": {
+      "hosting": {
+        "kanban-board": [
+          "kanban-board-700ab"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kanban-board-700ab"
+  }
+}

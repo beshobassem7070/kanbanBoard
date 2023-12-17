@@ -1,0 +1,47 @@
+<div class="body">
+  <div class="col-12 title">
+    <h2 class="font-weight-bold">Task Details</h2>
+  </div>
+  <div class="data">
+    <div class="row justify-content-center">
+      <div class="task-name">
+        <h2>{{ title }}</h2>
+        <div
+          class="status"
+          [ngStyle]="{
+            color: color,
+            background: backgroundColor(color)
+          }"
+        >
+          {{ status }}
+        </div>
+      </div>
+      <p class="description">{{ note }}</p>
+      <div class="date">
+        <mat-icon>access_time</mat-icon>
+        <span>{{ dueDate }}</span>
+      </div>
+      <div class="text-danger">
+        <strong>{{ calculateDiff(dueDate) }} </strong
+        ><span>days left until the deadline</span>
+      </div>
+    </div>
+    <div class="button-group">
+      <button
+        type="button"
+        (click)="cancel()"
+        class="btn-transition btn btn-outline-danger"
+      >
+        Close
+      </button>
+      <button
+        *ngIf="status != 'Done'"
+        type="submit"
+        class="btn btn-primary create"
+        (click)="complateTask()"
+      >
+        Mark as Complate
+      </button>
+    </div>
+  </div>
+</div>

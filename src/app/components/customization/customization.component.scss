@@ -1,0 +1,37 @@
+.body {
+  background-color: white;
+  .title {
+    background-color: hsl(219, 79%, 66%, 20%);
+    h2 {
+      color: #6495ed;
+      font-weight: 600;
+      margin: 0;
+    }
+    padding: 16px;
+  }
+  .form {
+    padding: 16px;
+  }
+  .form-group {
+    margin-bottom: 30px;
+  }
+  .button-group {
+    text-align: end;
+    .create {
+      margin-left: 10px;
+    }
+  }
+  .bg-section {
+    display: flex;
+    .bg-color {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      margin-right: 24px;
+    }
+    .active-highliht-color {
+      border: 2px solid white;
+      outline: 2px solid black;
+    }
+  }
+}

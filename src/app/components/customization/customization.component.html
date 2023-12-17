@@ -1,0 +1,52 @@
+<div class="body">
+  <div class="col-12 title">
+    <h2 class="font-weight-bold">Customization</h2>
+  </div>
+
+  <form #f="ngForm" (ngSubmit)="create(f)" class="form">
+    <div class="row mt-2 justify-content-center">
+      <div class="form-group">
+        <label for="name">Title</label>
+        <input
+          [(ngModel)]="title"
+          placeholder="Title"
+          name="title"
+          class="form-control"
+          ngModel
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="name">Color</label>
+        <div class="bg-section">
+          <div
+            *ngFor="let bg of backgroundColor; let i = index"
+            class="bg-color"
+            [ngClass]="{
+              'active-highliht-color': highlihtColorSelected == bg
+            }"
+            [ngStyle]="{ background: bg }"
+            (click)="selectBackgroundColor(bg)"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <div class="button-group">
+      <button
+        type="button"
+        (click)="cancel()"
+        class="btn-transition btn btn-outline-danger"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        [disabled]="f.invalid"
+        class="btn btn-primary create"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

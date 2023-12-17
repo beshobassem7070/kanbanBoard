@@ -1,0 +1,61 @@
+.body {
+  background-color: white;
+  .title {
+    background-color: hsl(219, 79%, 66%, 20%);
+    h2 {
+      color: #6495ed;
+      font-weight: 600;
+      margin: 0;
+    }
+    padding: 16px;
+  }
+  .data {
+    padding: 16px;
+
+    .task-name {
+      display: flex;
+      h2 {
+        font-weight: 600;
+        color: #4d4d4d;
+        margin: -6px 10px 0 0;
+      }
+      .status {
+        margin-bottom: 4px;
+        border-radius: 4px;
+        padding: 0 10px;
+        font-size: 12px;
+        height: 21px;
+      }
+      .todo-statue {
+        // background-color: hsla(39, 72%, 52%, 0.2);
+        // color: hsla(39, 72%, 52%);
+      }
+      .inprogress-statue {
+        // background-color: hsl(231, 72%, 52%, 0.2);
+        // color: hsl(231, 72%, 52%);
+      }
+      .done-statue {
+        // background-color: hsla(150, 72%, 52%, 0.2);
+        // color: hsl(150, 72%, 52%);
+      }
+    }
+    .description {
+      color: gray;
+    }
+    .date {
+      mat-icon {
+        color: #666;
+        font-size: 16px;
+        vertical-align: middle;
+        margin-right: -4px;
+        margin-bottom: -5px;
+      }
+    }
+    .button-group {
+      text-align: end;
+      .create {
+        margin-left: 10px;
+      }
+    }
+  }
+}
