@@ -47,8 +47,10 @@
 }
 
 ::ng-deep .mat-mdc-menu-panel.test {
+  background-color: white !important;
   width: 300px;
   .mat-mdc-menu-item {
+    color: black;
     border-bottom: 1px solid #eee;
     padding: 10px;
     &:nth-last-child(1) {
@@ -62,5 +64,9 @@
     height: 19px;
     border-radius: 5px;
     margin: 0 0 0 10px;
+  }
+
+  .no-notification {
+    text-align: center;
   }
 }

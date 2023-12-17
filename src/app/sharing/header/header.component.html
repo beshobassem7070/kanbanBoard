@@ -53,5 +53,8 @@
         <span>{{ task.dueDate }}</span>
       </div>
     </div>
+    <h3 *ngIf="approachingTasks.length == 0" class="no-notification">
+      No Notification
+    </h3>
   </mat-menu>
 </div>
