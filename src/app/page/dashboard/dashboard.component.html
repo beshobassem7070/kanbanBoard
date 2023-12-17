@@ -44,7 +44,13 @@
           >
             <div class="example-box" cdkDrag *ngFor="let item of todoList">
               <div class="title">
-                <h4 (click)="taskDetails(item, sectionTitle?.todoColor)">
+                <h4
+                  (click)="taskDetails(item, sectionTitle?.todoColor)"
+                  mat-raised-button
+                  matTooltip="View Task Details"
+                  matTooltipPosition="above"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
                   {{ item.title }}
                 </h4>
                 <div class="menu">
@@ -129,7 +135,13 @@
               *ngFor="let item of inProgressList"
             >
               <div class="title">
-                <h4 (click)="taskDetails(item, sectionTitle?.inprogressColor)">
+                <h4
+                  (click)="taskDetails(item, sectionTitle?.inprogressColor)"
+                  mat-raised-button
+                  matTooltip="View Task Details"
+                  matTooltipPosition="above"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
                   {{ item.title }}
                 </h4>
                 <div class="menu">
@@ -212,7 +224,13 @@
           >
             <div class="example-box" cdkDrag *ngFor="let item of doneList">
               <div class="title">
-                <h4 (click)="taskDetails(item, sectionTitle?.doneColor)">
+                <h4
+                  (click)="taskDetails(item, sectionTitle?.doneColor)"
+                  mat-raised-button
+                  matTooltip="View Task Details"
+                  matTooltipPosition="above"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
                   {{ item.title }}
                 </h4>
                 <div class="menu">

@@ -31,6 +31,7 @@ import { AddInprogressTaskComponent } from './components/add-inprogress-task/add
 import { AddDoneTaskComponent } from './components/add-done-task/add-done-task.component';
 import { ProfileComponent } from './page/profile/profile.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { CustomizationComponent } from './components/customization/customization.component';
 @NgModule({
@@ -60,6 +61,7 @@ import { CustomizationComponent } from './components/customization/customization
     MatIconModule,
     MatDialogModule,
     MatMenuModule,
+    MatTooltipModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyAX3sVVB-P17SD_Lw42K0p5dssRQdNTqek',
